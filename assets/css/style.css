@@ -392,30 +392,20 @@ a:visited {
   fill: currentColor;
 }
 
-.social-orcid-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--color-text-muted);
-  font-size: 0.875rem;
-  line-height: 1.2;
-  text-decoration: none;
-  transition: color 0.15s ease;
+.social-icon-link--orcid {
+  padding: 0;
+  border: none;
+  background: transparent;
 }
 
-.social-orcid-link:hover {
-  color: var(--color-accent);
-  text-decoration: none;
+.social-icon-link--orcid:hover {
+  border: none;
+  opacity: 0.85;
 }
 
-.social-orcid-icon {
+.social-icon-link--orcid svg {
   width: 24px;
   height: 24px;
-  flex-shrink: 0;
-}
-
-.social-orcid-id {
-  word-break: break-all;
 }
 
 @media (max-width: 768px) {

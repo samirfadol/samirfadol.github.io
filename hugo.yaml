@@ -21,7 +21,7 @@ params:
     - "Liberal International Order"
     - "U.S. Foreign Policy"
   mysite:
-    credit: false
+    credit: true
     discovery: true
 
   banner:

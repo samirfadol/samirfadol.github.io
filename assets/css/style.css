@@ -163,11 +163,18 @@ body {
   border-bottom: 1px solid var(--color-border);
 }
 
+.banner-image-wrap {
+  background: #1a2830;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .site-banner img {
   width: 100%;
-  max-height: 240px;
-  object-fit: cover;
-  object-position: center 45%;
+  max-height: 480px;
+  object-fit: contain;
+  object-position: center center;
   display: block;
 }
 

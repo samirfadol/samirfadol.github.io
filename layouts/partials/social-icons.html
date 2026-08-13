@@ -7,13 +7,14 @@
   </a>
   {{ end }}
   {{ with .Site.Params.orcid }}
-  <a href="{{ . }}" class="social-icon-link social-icon-link--orcid" target="_blank" rel="noopener noreferrer" aria-label="ORCID">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" aria-hidden="true" focusable="false">
+  <a href="{{ . }}" class="social-orcid-link" target="_blank" rel="noopener noreferrer" aria-label="View ORCID record - {{ replace . "https://orcid.org/" "" }}">
+    <svg class="social-orcid-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" aria-hidden="true" focusable="false">
       <path fill="#A6CE39" d="M256 128c0 70.692-57.308 128-128 128C57.308 256 0 198.692 0 128 0 57.308 57.308 0 128 0c70.692 0 128 57.308 128 128z"/>
       <path fill="#FFF" d="M86.173 109.5c0-9.033 7.326-16.36 16.36-16.36 9.033 0 16.36 7.327 16.36 16.36 0 9.034-7.327 16.36-16.36 16.36-9.034 0-16.36-7.326-16.36-16.36z"/>
       <path fill="#FFF" d="M71.173 186.5V109.5h30v77h-30z"/>
       <path fill="#FFF" d="M155.673 186.5V109.5h30v12.5c5.5-8.5 15.5-14 27.5-14 25 0 40.5 16.5 40.5 42v36.5h-30v-34c0-10.5-7-17.5-17.5-17.5s-17.5 7-17.5 17.5v34h-33.5z"/>
     </svg>
+    <span class="social-orcid-id">{{ . }}</span>
   </a>
   {{ end }}
   {{ with .Site.Params.linkedin }}

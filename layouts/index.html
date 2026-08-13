@@ -128,7 +128,7 @@
         <div class="award-title">{{ .degree }}</div>
         <div class="award-meta">{{ .institution }}, {{ .years }}</div>
         {{ with .thesis }}<p class="award-desc">Thesis: &ldquo;{{ . }}&rdquo;</p>{{ end }}
-        {{ with .concentration }}<p class="award-desc">Concentration: {{ . }}</p>{{ end }}
+        {{ with .concentration }}<p class="award-desc">Concentration {{ . }}</p>{{ end }}
       </li>
       {{ end }}
     </ul>

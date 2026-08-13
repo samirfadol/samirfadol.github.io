@@ -605,12 +605,37 @@ a:visited {
 }
 
 /* Contact */
-.contact-email {
-  font-size: 1.0625rem;
+.contact-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
 }
 
-.contact-links {
-  margin-top: 1rem;
+.contact-icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  background: var(--color-surface);
+  line-height: 0;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.contact-icon-link:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  text-decoration: none;
+}
+
+.contact-icon-link svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
 }
 
 /* Footer */

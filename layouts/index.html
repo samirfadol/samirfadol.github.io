@@ -224,11 +224,7 @@
 
   <section id="contact">
     <h2>Contact</h2>
-    <p class="contact-email"><a href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a></p>
-    <div class="contact-links social-links">
-      {{ with .Site.Params.orcid }}<a href="{{ . }}" target="_blank" rel="noopener noreferrer">ORCID</a>{{ end }}
-      {{ with .Site.Params.linkedin }}<a href="{{ . }}" target="_blank" rel="noopener noreferrer">LinkedIn</a>{{ end }}
-    </div>
+    {{ partial "contact-icons.html" . }}
   </section>
 
 </div>

@@ -1,0 +1,6 @@
+{{ with .Site.Params.banner }}
+<figure class="site-banner">
+  <img src="{{ .image | relURL }}" alt="{{ .alt }}" width="1200" height="400" loading="eager">
+  <figcaption class="banner-citation">{{ .citation | safeHTML }}</figcaption>
+</figure>
+{{ end }}

@@ -179,11 +179,23 @@
   {{ if $media }}
   <section id="media">
     <h2>Media</h2>
-    <ul class="award-list">
+    <ul class="media-list">
       {{ range $media }}
-      <li class="award-item">
-        <div class="award-title">{{ if .link }}<a href="{{ .link }}" target="_blank" rel="noopener noreferrer">{{ .title }}</a>{{ else }}{{ .title }}{{ end }}</div>
-        <div class="award-meta">{{ .venue }}{{ with .interviewer }} (with {{ . }}){{ end }}, {{ .date }}</div>
+      {{ $item := . }}
+      <li class="media-item">
+        {{ with $item.icon }}
+        {{ if $item.link }}
+        <a href="{{ $item.link }}" target="_blank" rel="noopener noreferrer" class="media-icon-link" aria-label="{{ $item.icon_alt | default "Visit media outlet" }}">
+          <img class="media-icon" src="{{ . | relURL }}" alt="" width="32" height="32" loading="lazy">
+        </a>
+        {{ else }}
+        <img class="media-icon" src="{{ . | relURL }}" alt="{{ $item.icon_alt | default "Media outlet logo" }}" width="32" height="32" loading="lazy">
+        {{ end }}
+        {{ end }}
+        <div class="media-content">
+          <div class="award-title">{{ if $item.link }}<a href="{{ $item.link }}" target="_blank" rel="noopener noreferrer">{{ $item.title }}</a>{{ else }}{{ $item.title }}{{ end }}</div>
+          <div class="award-meta">{{ $item.venue }}{{ with $item.interviewer }} (with {{ . }}){{ end }}, {{ $item.date }}</div>
+        </div>
       </li>
       {{ end }}
     </ul>

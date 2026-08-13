@@ -479,6 +479,46 @@ a:visited {
   margin: 0.25rem 0 0;
 }
 
+.media-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.media-item {
+  display: flex;
+  gap: 0.875rem;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.media-item:last-child {
+  margin-bottom: 0;
+}
+
+.media-icon-link {
+  flex-shrink: 0;
+  line-height: 0;
+}
+
+.media-icon-link:hover {
+  text-decoration: none;
+  opacity: 0.85;
+}
+
+.media-icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  object-fit: contain;
+}
+
+.media-content {
+  flex: 1;
+  min-width: 0;
+}
+
 /* Contact */
 .contact-email {
   font-size: 1.0625rem;

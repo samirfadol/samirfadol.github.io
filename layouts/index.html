@@ -200,10 +200,22 @@
   {{ if $memberships }}
   <section id="memberships">
     <h2>Memberships</h2>
-    <ul class="award-list">
+    <ul class="media-list">
       {{ range $memberships }}
-      <li class="award-item">
-        <div class="award-title">{{ .name }}</div>
+      {{ $item := . }}
+      <li class="media-item">
+        {{ with $item.icon }}
+        {{ if $item.link }}
+        <a href="{{ $item.link }}" target="_blank" rel="noopener noreferrer" class="media-icon-link" aria-label="{{ $item.icon_alt | default "Visit organization website" }}">
+          <img class="media-icon" src="{{ . | relURL }}" alt="" width="32" height="32" loading="lazy">
+        </a>
+        {{ else }}
+        <img class="media-icon" src="{{ . | relURL }}" alt="{{ $item.icon_alt | default "Organization logo" }}" width="32" height="32" loading="lazy">
+        {{ end }}
+        {{ end }}
+        <div class="media-content">
+          <div class="award-title">{{ if $item.link }}<a href="{{ $item.link }}" target="_blank" rel="noopener noreferrer">{{ $item.name }}</a>{{ else }}{{ $item.name }}{{ end }}</div>
+        </div>
       </li>
       {{ end }}
     </ul>

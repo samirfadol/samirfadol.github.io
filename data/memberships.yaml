@@ -1,3 +1,9 @@
 - name: "American Political Science Association (APSA)"
+  icon: "images/apsa-icon.png"
+  icon_alt: "APSA"
+  link: "https://www.apsanet.org/"
 
 - name: "International Studies Association (ISA)"
+  icon: "images/isa-icon.png"
+  icon_alt: "ISA"
+  link: "https://www.isanet.org/"

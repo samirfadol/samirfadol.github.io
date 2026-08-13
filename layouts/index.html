@@ -38,10 +38,7 @@
     {{ range where $papers "job_market_paper" true }}
     <div class="paper-jmp">
       <p class="paper-meta">Job Market Paper</p>
-      <p class="paper-title">
-        {{ if .pdf }}<a href="{{ .pdf | relURL }}">{{ .title }}</a>{{ else if .link }}<a href="{{ .link }}" target="_blank" rel="noopener noreferrer">{{ .title }}</a>{{ else }}{{ .title }}{{ end }}
-        {{ with .status }}<span class="status-badge">{{ if eq . "work in progress" }}Work in Progress{{ else if eq . "working paper" }}Working Paper{{ else if eq . "under review" }}Under Review{{ else if eq . "revise and resubmit" }}R&amp;R{{ else if eq . "published" }}Published{{ else if eq . "accepted" }}Accepted{{ else }}{{ . | title }}{{ end }}</span>{{ end }}
-      </p>
+      {{ partial "paper-citation.html" . }}
       {{ with .abstract }}<p class="paper-abstract">{{ . }}</p>{{ end }}
     </div>
     {{ end }}
@@ -56,11 +53,7 @@
         {{ if or (eq .status "work in progress") (eq .status "working paper") }}
         {{ if not .job_market_paper }}
         <li class="paper-item">
-          <p class="paper-meta">{{ delimit .authors ", " }}{{ with .year }}, {{ . }}{{ end }}</p>
-          <p class="paper-title">
-            {{ if .pdf }}<a href="{{ .pdf | relURL }}">{{ .title }}</a>{{ else if .link }}<a href="{{ .link }}" target="_blank" rel="noopener noreferrer">{{ .title }}</a>{{ else }}{{ .title }}{{ end }}
-            {{ with .status }}<span class="status-badge">{{ if eq . "work in progress" }}Work in Progress{{ else if eq . "working paper" }}Working Paper{{ else if eq . "under review" }}Under Review{{ else if eq . "revise and resubmit" }}R&amp;R{{ else if eq . "published" }}Published{{ else if eq . "accepted" }}Accepted{{ else }}{{ . | title }}{{ end }}</span>{{ end }}
-          </p>
+          {{ partial "paper-citation.html" . }}
         </li>
         {{ end }}
         {{ end }}
@@ -81,11 +74,7 @@
         {{ if or (eq .status "published") (eq .status "accepted") (eq .status "under review") (eq .status "revise and resubmit") }}
         {{ if not .job_market_paper }}
         <li class="paper-item">
-          <p class="paper-meta">{{ delimit .authors ", " }}{{ with .year }}, {{ . }}{{ end }}{{ with .venue }}. <em>{{ . }}</em>{{ end }}</p>
-          <p class="paper-title">
-            {{ if .pdf }}<a href="{{ .pdf | relURL }}">{{ .title }}</a>{{ else if .link }}<a href="{{ .link }}" target="_blank" rel="noopener noreferrer">{{ .title }}</a>{{ else }}{{ .title }}{{ end }}
-            {{ with .status }}<span class="status-badge">{{ if eq . "published" }}Published{{ else if eq . "accepted" }}Accepted{{ else if eq . "under review" }}Under Review{{ else if eq . "revise and resubmit" }}R&amp;R{{ else }}{{ . | title }}{{ end }}</span>{{ end }}
-          </p>
+          {{ partial "paper-citation.html" . }}
         </li>
         {{ end }}
         {{ end }}

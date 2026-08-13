@@ -1,0 +1,6 @@
+{{/* Chicago-style bibliography entry for a paper object */}}
+<p class="paper-citation">
+  {{ delimit .authors ", " }}.
+  &ldquo;{{ if .pdf }}<a href="{{ .pdf | relURL }}">{{ .title }}</a>{{ else if .link }}<a href="{{ .link }}" target="_blank" rel="noopener noreferrer">{{ .title }}</a>{{ else }}{{ .title }}{{ end }}.&rdquo;
+  {{ if eq .status "work in progress" }} Manuscript in preparation.{{ else if eq .status "working paper" }} Working paper.{{ else if eq .status "under review" }} Under review.{{ else if eq .status "revise and resubmit" }} Revise and resubmit.{{ else if eq .status "accepted" }}{{ with .venue }} <em>{{ . }}</em>{{ end }}. Accepted.{{ else if eq .status "published" }}{{ with .venue }} <em>{{ . }}</em>{{ end }}.{{ else }}{{ with .status }} {{ . | title }}.{{ end }}{{ end }}
+</p>

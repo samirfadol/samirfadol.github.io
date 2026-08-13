@@ -403,6 +403,18 @@ a:visited {
   color: var(--color-accent);
 }
 
+.paper-citation {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+  color: var(--color-text);
+}
+
+.paper-citation a {
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
 .paper-abstract {
   font-size: 0.9375rem;
   color: var(--color-text-muted);

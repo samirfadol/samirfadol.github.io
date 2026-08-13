@@ -1,0 +1,42 @@
+baseURL: "https://samirfadol.github.io/"
+title: "Samir A. Fadol"
+defaultContentLanguage: en
+languages:
+  en:
+    label: English
+    weight: 1
+
+params:
+  description: "Political science research assistant specializing in international relations theory and U.S. foreign policy."
+  author: "Samir A. Fadol"
+  email: "samirfadol@hotmail.com"
+  tagline: "I study the international relations theory of the liberal international order"
+  photo: "images/photo.jpg"
+  orcid: "https://orcid.org/0009-0005-7645-816X"
+  linkedin: "https://www.linkedin.com/in/samirfadol/"
+  research_interests:
+    - "International Relations Theory"
+    - "Neorealism"
+    - "Liberal Internationalism"
+    - "Liberal International Order"
+    - "U.S. Foreign Policy"
+  mysite:
+    credit: true
+    discovery: true
+
+menu:
+  main:
+    - name: Research
+      url: "/#research"
+      weight: 10
+    - name: CV
+      url: "/files/cv.pdf"
+      weight: 20
+    - name: Contact
+      url: "/#contact"
+      weight: 30
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true

@@ -1,0 +1,218 @@
+{{ define "main" }}
+<div class="container">
+
+  <header class="hero">
+    <div class="hero-photo">
+      <img src="{{ .Site.Params.photo | relURL }}" alt="Portrait of {{ .Site.Params.author }}" width="160" height="160" loading="eager">
+    </div>
+    <div class="hero-content">
+      <h1>{{ .Site.Params.author }}</h1>
+      {{ with .Site.Params.tagline }}<p class="hero-tagline">{{ . }}</p>{{ end }}
+      {{ with .Site.Params.research_interests }}
+      <div class="hero-interests">
+        {{ range . }}<span class="interest-tag">{{ . }}</span>{{ end }}
+      </div>
+      {{ end }}
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="{{ "files/cv.pdf" | relURL }}">CV (PDF)</a>
+        <div class="social-links">
+          {{ with .Site.Params.email }}<a href="mailto:{{ . }}">Email</a>{{ end }}
+          {{ with .Site.Params.orcid }}<a href="{{ . }}" target="_blank" rel="noopener noreferrer">ORCID</a>{{ end }}
+          {{ with .Site.Params.linkedin }}<a href="{{ . }}" target="_blank" rel="noopener noreferrer">LinkedIn</a>{{ end }}
+        </div>
+      </div>
+    </div>
+  </header>
+
+  {{ with .Content }}
+  <section id="about" class="bio">
+    <h2>About</h2>
+    <div class="bio-content">{{ $.Content }}</div>
+  </section>
+  {{ end }}
+
+  {{ $papers := site.Data.papers }}
+  {{ if $papers }}
+  <section id="research">
+    <h2>Research</h2>
+    {{ range where $papers "job_market_paper" true }}
+    <div class="paper-jmp">
+      <p class="paper-meta">Job Market Paper</p>
+      <p class="paper-title">
+        {{ if .pdf }}<a href="{{ .pdf | relURL }}">{{ .title }}</a>{{ else if .link }}<a href="{{ .link }}" target="_blank" rel="noopener noreferrer">{{ .title }}</a>{{ else }}{{ .title }}{{ end }}
+        {{ with .status }}<span class="status-badge">{{ if eq . "work in progress" }}Work in Progress{{ else if eq . "working paper" }}Working Paper{{ else if eq . "under review" }}Under Review{{ else if eq . "revise and resubmit" }}R&amp;R{{ else if eq . "published" }}Published{{ else if eq . "accepted" }}Accepted{{ else }}{{ . | title }}{{ end }}</span>{{ end }}
+      </p>
+      {{ with .abstract }}<p class="paper-abstract">{{ . }}</p>{{ end }}
+    </div>
+    {{ end }}
+
+    {{ $wip := where $papers "status" "work in progress" }}
+    {{ $wp := where $papers "status" "working paper" }}
+    {{ if or $wip $wp }}
+    <div class="paper-group">
+      <h3>Working Papers</h3>
+      <ul class="paper-list">
+        {{ range $papers }}
+        {{ if or (eq .status "work in progress") (eq .status "working paper") }}
+        {{ if not .job_market_paper }}
+        <li class="paper-item">
+          <p class="paper-meta">{{ delimit .authors ", " }}{{ with .year }}, {{ . }}{{ end }}</p>
+          <p class="paper-title">
+            {{ if .pdf }}<a href="{{ .pdf | relURL }}">{{ .title }}</a>{{ else if .link }}<a href="{{ .link }}" target="_blank" rel="noopener noreferrer">{{ .title }}</a>{{ else }}{{ .title }}{{ end }}
+            {{ with .status }}<span class="status-badge">{{ if eq . "work in progress" }}Work in Progress{{ else if eq . "working paper" }}Working Paper{{ else if eq . "under review" }}Under Review{{ else if eq . "revise and resubmit" }}R&amp;R{{ else if eq . "published" }}Published{{ else if eq . "accepted" }}Accepted{{ else }}{{ . | title }}{{ end }}</span>{{ end }}
+          </p>
+        </li>
+        {{ end }}
+        {{ end }}
+        {{ end }}
+      </ul>
+    </div>
+    {{ end }}
+
+    {{ $pub := where $papers "status" "published" }}
+    {{ $acc := where $papers "status" "accepted" }}
+    {{ $ur := where $papers "status" "under review" }}
+    {{ $rr := where $papers "status" "revise and resubmit" }}
+    {{ if or $pub $acc $ur $rr }}
+    <div class="paper-group">
+      <h3>Publications</h3>
+      <ul class="paper-list">
+        {{ range $papers }}
+        {{ if or (eq .status "published") (eq .status "accepted") (eq .status "under review") (eq .status "revise and resubmit") }}
+        {{ if not .job_market_paper }}
+        <li class="paper-item">
+          <p class="paper-meta">{{ delimit .authors ", " }}{{ with .year }}, {{ . }}{{ end }}{{ with .venue }}. <em>{{ . }}</em>{{ end }}</p>
+          <p class="paper-title">
+            {{ if .pdf }}<a href="{{ .pdf | relURL }}">{{ .title }}</a>{{ else if .link }}<a href="{{ .link }}" target="_blank" rel="noopener noreferrer">{{ .title }}</a>{{ else }}{{ .title }}{{ end }}
+            {{ with .status }}<span class="status-badge">{{ if eq . "published" }}Published{{ else if eq . "accepted" }}Accepted{{ else if eq . "under review" }}Under Review{{ else if eq . "revise and resubmit" }}R&amp;R{{ else }}{{ . | title }}{{ end }}</span>{{ end }}
+          </p>
+        </li>
+        {{ end }}
+        {{ end }}
+        {{ end }}
+      </ul>
+    </div>
+    {{ end }}
+  </section>
+  {{ end }}
+
+  {{ $projects := site.Data.projects }}
+  {{ if $projects }}
+  <section id="software">
+    <h2>Software &amp; Tools</h2>
+    <ul class="project-list">
+      {{ range $projects }}
+      <li class="project-item">
+        <span class="project-name"><a href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .name }}</a></span>
+        <p class="project-desc">{{ .description }}</p>
+      </li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
+
+  {{ $teaching := site.Data.teaching }}
+  {{ if $teaching }}
+  <section id="teaching">
+    <h2>Teaching</h2>
+    <ul class="award-list">
+      {{ range $teaching }}
+      <li class="award-item">
+        <div class="award-title">{{ .course }}</div>
+        <div class="award-meta">{{ .role }}, {{ .institution }}, {{ .term }}</div>
+      </li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
+
+  {{ $education := site.Data.education }}
+  {{ if $education }}
+  <section id="education">
+    <h2>Education</h2>
+    <ul class="award-list">
+      {{ range $education }}
+      <li class="award-item">
+        <div class="award-title">{{ .degree }}</div>
+        <div class="award-meta">{{ .institution }}, {{ .years }}</div>
+      </li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
+
+  {{ $experience := site.Data.experience }}
+  {{ if $experience }}
+  <section id="experience">
+    <h2>Experience</h2>
+    {{ range $experience }}
+    <div class="paper-item" style="border-bottom: none; padding-bottom: 0;">
+      <div class="award-title">{{ .title }}</div>
+      <div class="award-meta">{{ .institution }}, {{ .dates }}</div>
+      {{ with .details }}
+      <ul>
+        {{ range . }}<li>{{ . | markdownify }}</li>{{ end }}
+      </ul>
+      {{ end }}
+    </div>
+    {{ end }}
+  </section>
+  {{ end }}
+
+  {{ $awards := site.Data.awards }}
+  {{ if $awards }}
+  <section id="awards">
+    <h2>Awards &amp; Fellowships</h2>
+    <ul class="award-list">
+      {{ range $awards }}
+      <li class="award-item">
+        <div class="award-title">{{ .title }}</div>
+        <div class="award-meta">{{ .institution }}, {{ .year }}</div>
+        {{ with .description }}<p class="award-desc">{{ . }}</p>{{ end }}
+      </li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
+
+  {{ $media := site.Data.media }}
+  {{ if $media }}
+  <section id="media">
+    <h2>Media</h2>
+    <ul class="award-list">
+      {{ range $media }}
+      <li class="award-item">
+        <div class="award-title">{{ .title }}</div>
+        <div class="award-meta">{{ .venue }}{{ with .interviewer }} (with {{ . }}){{ end }}, {{ .date }}</div>
+      </li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
+
+  {{ $memberships := site.Data.memberships }}
+  {{ if $memberships }}
+  <section id="memberships">
+    <h2>Memberships</h2>
+    <ul class="award-list">
+      {{ range $memberships }}
+      <li class="award-item">
+        <div class="award-title">{{ .name }}</div>
+        <div class="award-meta">{{ .dates }}</div>
+      </li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p class="contact-email"><a href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a></p>
+    <div class="contact-links social-links">
+      {{ with .Site.Params.orcid }}<a href="{{ . }}" target="_blank" rel="noopener noreferrer">ORCID</a>{{ end }}
+      {{ with .Site.Params.linkedin }}<a href="{{ . }}" target="_blank" rel="noopener noreferrer">LinkedIn</a>{{ end }}
+    </div>
+  </section>
+
+</div>
+{{ end }}

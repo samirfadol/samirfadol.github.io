@@ -1,0 +1,34 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ if .IsHome }}{{ .Site.Params.author }}{{ else }}{{ .Title }} · {{ .Site.Params.author }}{{ end }}</title>
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+
+{{ if .Site.Params.mysite.discovery }}
+<meta name="generator" content="Created using GaryKing.org/mysite (https://gking.harvard.edu/mysite)">
+{{ end }}
+
+<meta property="og:title" content="{{ if .IsHome }}{{ .Site.Params.author }}{{ else }}{{ .Title }}{{ end }}">
+<meta property="og:description" content="{{ .Site.Params.description }}">
+<meta property="og:type" content="{{ if .IsHome }}profile{{ else }}article{{ end }}">
+<meta property="og:url" content="{{ .Permalink }}">
+{{ with .Site.Params.photo }}<meta property="og:image" content="{{ . | absURL }}">{{ end }}
+
+<link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
+<link rel="icon" href="{{ "favicon-32x32.png" | relURL }}" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | relURL }}">
+
+{{ $css := resources.Get "css/style.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+
+{{ if and .IsHome .Site.Params.mysite.discovery }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": {{ .Site.Params.author | jsonify }},
+  "url": {{ .Site.BaseURL | jsonify }},
+  "email": {{ .Site.Params.email | jsonify }},
+  "isBasedOn": "https://gking.harvard.edu/mysite"
+}
+</script>
+{{ end }}

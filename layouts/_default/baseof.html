@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}">
+<head>
+  {{ partial "head.html" . }}
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  {{ partial "nav.html" . }}
+  <main id="main-content">
+    {{ block "main" . }}{{ end }}
+  </main>
+  {{ partial "footer.html" . }}
+  <script>
+    (function () {
+      var toggle = document.querySelector('.nav-toggle');
+      var links = document.querySelector('.nav-links');
+      if (toggle && links) {
+        toggle.addEventListener('click', function () {
+          links.classList.toggle('is-open');
+          var expanded = links.classList.contains('is-open');
+          toggle.setAttribute('aria-expanded', expanded);
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

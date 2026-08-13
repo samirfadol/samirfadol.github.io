@@ -1,0 +1,9 @@
+- name: "RStudio"
+  description: "Statistical computing and visualization for quantitative research."
+  url: "https://posit.co/products/open-source/rstudio/"
+  language: "R"
+
+- name: "Zotero"
+  description: "Reference management for academic research and writing."
+  url: "https://www.zotero.org/"
+  language: ""

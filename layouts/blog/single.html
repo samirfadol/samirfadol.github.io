@@ -1,0 +1,12 @@
+{{ define "main" }}
+<div class="container">
+  <a class="back-link" href="{{ "/" | relURL }}">&larr; Home</a>
+  <article>
+    <h1>{{ .Title }}</h1>
+    {{ with .Date }}<p class="post-meta">{{ .Format "January 2, 2006" }}</p>{{ end }}
+    <div class="bio-content">
+      {{ .Content }}
+    </div>
+  </article>
+</div>
+{{ end }}

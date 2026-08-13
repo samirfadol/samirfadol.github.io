@@ -1,0 +1,15 @@
+{{ define "main" }}
+<div class="container">
+  <a class="back-link" href="{{ "/" | relURL }}">&larr; Home</a>
+  <h1>Blog</h1>
+  <ul class="post-list">
+    {{ range .Pages.ByDate.Reverse }}
+    <li class="post-list-item">
+      <span class="post-list-date">{{ .Date.Format "Jan 2, 2006" }}</span><br>
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      {{ with .Description }}<p class="project-desc">{{ . }}</p>{{ end }}
+    </li>
+    {{ end }}
+  </ul>
+</div>
+{{ end }}

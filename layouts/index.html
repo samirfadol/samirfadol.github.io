@@ -188,7 +188,7 @@
         {{ end }}
         <div class="media-content">
           <div class="award-title">{{ if $item.link }}<a href="{{ $item.link }}" target="_blank" rel="noopener noreferrer">{{ $item.title }}</a>{{ else }}{{ $item.title }}{{ end }}</div>
-          <div class="award-meta">{{ $item.venue }}{{ with $item.interviewer }} (with {{ . }}){{ end }}, {{ $item.date }}</div>
+          <div class="award-meta"><em>{{ $item.program }}</em>, {{ $item.network }}. Interview by {{ $item.interviewer }}, {{ $item.date }}.</div>
         </div>
       </li>
       {{ end }}

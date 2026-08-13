@@ -15,11 +15,7 @@
       {{ end }}
       <div class="hero-actions">
         <a class="btn btn-primary" href="{{ "files/cv.pdf" | relURL }}">CV (PDF)</a>
-        <div class="social-links">
-          {{ with .Site.Params.email }}<a href="mailto:{{ . }}">Email</a>{{ end }}
-          {{ with .Site.Params.orcid }}<a href="{{ . }}" target="_blank" rel="noopener noreferrer">ORCID</a>{{ end }}
-          {{ with .Site.Params.linkedin }}<a href="{{ . }}" target="_blank" rel="noopener noreferrer">LinkedIn</a>{{ end }}
-        </div>
+        {{ partial "social-icons.html" . }}
       </div>
     </div>
   </header>
@@ -224,7 +220,7 @@
 
   <section id="contact">
     <h2>Contact</h2>
-    {{ partial "contact-icons.html" . }}
+    {{ partial "social-icons.html" . }}
   </section>
 
 </div>

@@ -14,7 +14,7 @@
       </div>
       {{ end }}
       <div class="hero-actions">
-        <a class="btn btn-primary" href="{{ "files/cv.pdf" | relURL }}">CV (PDF)</a>
+        <a class="btn btn-primary" href="{{ .Site.Params.cv | relURL }}" target="_blank" rel="noopener noreferrer">CV (PDF)</a>
         {{ partial "social-icons.html" . }}
       </div>
     </div>

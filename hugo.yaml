@@ -12,6 +12,7 @@ params:
   email: "sfa001@dohainstitute.edu.qa"
   tagline: "I study the international relations theory of the liberal international order"
   photo: "images/photo.jpg"
+  cv: "files/Fadol_Curriculum Vitae_2026.pdf"
   orcid: "https://orcid.org/0009-0005-7645-816X"
   linkedin: "https://www.linkedin.com/in/samirfadol/"
   research_interests:
@@ -35,8 +36,10 @@ menu:
       url: "/#research"
       weight: 10
     - name: CV
-      url: "/files/cv.pdf"
+      url: "/files/Fadol_Curriculum Vitae_2026.pdf"
       weight: 20
+      params:
+        blank: true
     - name: Contact
       url: "/#contact"
       weight: 30

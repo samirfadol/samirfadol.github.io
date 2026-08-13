@@ -182,7 +182,7 @@
     <ul class="award-list">
       {{ range $media }}
       <li class="award-item">
-        <div class="award-title">{{ .title }}</div>
+        <div class="award-title">{{ if .link }}<a href="{{ .link }}" target="_blank" rel="noopener noreferrer">{{ .title }}</a>{{ else }}{{ .title }}{{ end }}</div>
         <div class="award-meta">{{ .venue }}{{ with .interviewer }} (with {{ . }}){{ end }}, {{ .date }}</div>
       </li>
       {{ end }}

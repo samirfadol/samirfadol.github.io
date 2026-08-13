@@ -288,10 +288,11 @@ a:visited {
 }
 
 .hero-photo img {
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
+  width: 150px;
+  height: 195px;
+  border-radius: 6px;
   object-fit: cover;
+  object-position: center 15%;
   display: block;
 }
 

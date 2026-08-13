@@ -592,6 +592,13 @@ a:visited {
   object-fit: contain;
 }
 
+#memberships .media-icon {
+  background: #fff;
+  border: 1px solid rgba(26, 45, 58, 0.12);
+  padding: 2px;
+  box-sizing: border-box;
+}
+
 .media-content {
   flex: 1;
   min-width: 0;

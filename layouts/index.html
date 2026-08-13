@@ -27,7 +27,10 @@
   {{ with .Content }}
   <section id="about" class="bio">
     <h2>About</h2>
-    <div class="bio-content">{{ $.Content }}</div>
+    <div class="about-layout">
+      <div class="bio-content">{{ $.Content }}</div>
+      {{ partial "featured-artwork.html" . }}
+    </div>
   </section>
   {{ end }}
 

@@ -1,8 +1,0 @@
-{{ with .Site.Params.banner }}
-<figure class="site-banner">
-  <div class="banner-image-wrap">
-    <img src="{{ .image | relURL }}" alt="{{ .alt }}" width="1581" height="3000" loading="eager">
-  </div>
-  <figcaption class="banner-citation">{{ .citation | safeHTML }}</figcaption>
-</figure>
-{{ end }}

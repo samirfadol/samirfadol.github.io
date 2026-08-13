@@ -1,0 +1,6 @@
+{{ with .Site.Params.featured_artwork }}
+<figure class="featured-artwork">
+  <img src="{{ .image | relURL }}" alt="{{ .alt }}" width="1581" height="3000" loading="lazy">
+  <figcaption class="artwork-citation">{{ .citation | safeHTML }}</figcaption>
+</figure>
+{{ end }}

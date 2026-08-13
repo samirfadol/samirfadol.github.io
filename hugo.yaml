@@ -24,7 +24,7 @@ params:
     credit: true
     discovery: true
 
-  banner:
+  featured_artwork:
     image: "images/avenue-in-the-rain.jpg"
     alt: "The Avenue in the Rain, 1917, by Childe Hassam"
     citation: "Hassam, Childe. <em>The Avenue in the Rain</em>. 1917. White House Historical Association."

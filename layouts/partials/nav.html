@@ -8,7 +8,11 @@
     </button>
     <ul class="nav-links" id="nav-menu">
       {{ range .Site.Menus.main }}
-      <li><a href="{{ .URL }}"{{ with .Params.blank }} target="_blank" rel="noopener noreferrer"{{ end }}>{{ .Name }}</a></li>
+      {{ $href := .URL }}
+      {{ if and (eq .Name "CV") $.Site.Params.cv }}
+        {{ $href = $.Site.Params.cv | relURL }}
+      {{ end }}
+      <li><a href="{{ $href }}"{{ with .Params.blank }} target="_blank" rel="noopener noreferrer"{{ end }}>{{ .Name }}</a></li>
       {{ end }}
     </ul>
   </div>

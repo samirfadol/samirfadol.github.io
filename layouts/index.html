@@ -135,17 +135,21 @@
   {{ if $experience }}
   <section id="experience">
     <h2>Experience</h2>
-    {{ range $experience }}
-    <div class="paper-item" style="border-bottom: none; padding-bottom: 0;">
-      <div class="award-title">{{ .title }}</div>
-      <div class="award-meta">{{ .institution }}, {{ .dates }}</div>
-      {{ with .details }}
-      <ul>
-        {{ range . }}<li>{{ . | markdownify }}</li>{{ end }}
-      </ul>
+    <ul class="award-list">
+      {{ range $experience }}
+      <li class="award-item">
+        <div class="award-title">{{ .title }}</div>
+        <div class="award-meta">{{ .institution }}</div>
+        {{ with .location }}<div class="award-meta">{{ . }}</div>{{ end }}
+        <div class="award-meta">{{ .dates }}</div>
+        {{ with .details }}
+        <ul>
+          {{ range . }}<li>{{ . | markdownify }}</li>{{ end }}
+        </ul>
+        {{ end }}
+      </li>
       {{ end }}
-    </div>
-    {{ end }}
+    </ul>
   </section>
   {{ end }}
 

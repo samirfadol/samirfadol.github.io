@@ -2,7 +2,7 @@
 title: "Samir A. Fadol"
 ---
 
-I am an independent researcher specializing in international relations theory and U.S. foreign policy. My projects investigate the intersection of neorealism and liberal internationalism, focusing on their visions for the liberal international order.
+I am a political science graduate specializing in international relations theory and U.S. foreign policy. My projects investigate the intersection of neorealism and liberal internationalism, focusing on their visions for the liberal international order.
 
 I earned a bachelor's degree in international affairs, concentrating on diplomacy and international security, from Qatar University and a master's degree in politics and international relations from Doha Institute for Graduate Studies. 
 
